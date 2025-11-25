@@ -40,7 +40,7 @@ app.post("/chat", async (req, res) => {
 
     // Prepare call to DeepSeek
     const apiResp = await axios.post(
-      "https://api.deepseek.com/v1",
+      "https://api.deepseek.com",
       {
         model: "deepseek-chat",
         messages: userMessages
