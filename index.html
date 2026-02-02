@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PelioScope</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    // Configure Tailwind to use class-based dark mode and custom animations
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          keyframes: {
+            fadeIn: {
+              'from': { opacity: 0 },
+              'to': { opacity: 1 },
+            },
+            fadeInUp: {
+              'from': { opacity: 0, transform: 'translateY(20px)' },
+              'to': { opacity: 1, transform: 'translateY(0)' },
+            },
+          },
+          animation: {
+            fadeIn: 'fadeIn 1.5s ease-out forwards',
+            fadeInUp: 'fadeInUp 1.2s ease-out forwards',
+          },
+        },
+      },
+    }
+  </script>
+  <link rel="manifest" href="/manifest.webmanifest" />
+  <meta name="theme-color" content="#6366f1" />
+  <style>
+    body {
+      overscroll-behavior-y: none;
+    }
+  </style>
+  <script>
+    // Flicker-free dark mode
+    (function() {
+      try {
+        var themePreference = localStorage.getItem('theme');
+        var theme = themePreference ? JSON.parse(themePreference) : null;
+
+        if (theme === 'dark' || (!theme && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+          document.documentElement.classList.add('dark');
+        } else {
+          document.documentElement.classList.remove('dark');
+        }
+      } catch (e) { /* ignore */ }
+    })();
+  </script>
+  <script type="importmap">
+    {
+      "imports": {
+        "react": "https://aistudiocdn.com/react@^19.2.0",
+        "react-dom/": "https://aistudiocdn.com/react-dom@^19.2.0/",
+        "react/": "https://aistudiocdn.com/react@^19.2.0/",
+        "firebase/app": "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js",
+        "firebase/database": "https://www.gstatic.com/firebasejs/10.12.2/firebase-database.js",
+        "firebase/": "https://aistudiocdn.com/firebase@^12.6.0/"
+      }
+    }
+  </script>
+</head>
+<body>
+<noscript>You need to enable JavaScript to run this app.</noscript>
+<div id="root"></div>
+<script type="module" src="/index.tsx"></script>
+<script>
+  if ('serviceWorker' in navigator) {
+    window.addEventListener('load', () => {
+      // FIX: Construct a full, absolute URL to the service worker script.
+      // This resolves the cross-origin security error in the sandboxed environment
+      // by removing any ambiguity about the script's origin.
+      const swUrl = `${location.protocol}//${location.host}/sw.js`;
+      navigator.serviceWorker.register(swUrl).then(registration => {
+        console.log('ServiceWorker registration successful with scope: ', registration.scope);
+      }, err => {
+        console.log('ServiceWorker registration failed: ', err);
+      });
+    });
+  }
+</script>
+</body>
+</html>

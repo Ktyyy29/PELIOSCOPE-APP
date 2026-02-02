@@ -1,24 +1,28 @@
 {
-  "name": "deepseek-render-backend",
-  "version": "1.0.0",
-  "description": "Proxy backend to connect mobile app to DeepSeek",
+  "name": "emotion-companion-app",
+  "private": true,
+  "version": "0.0.0",
   "type": "module",
-  "main": "index.js",
   "scripts": {
-    "start": "node index.js",
-    "start:dev": "nodemon index.js"
+    "dev": "vite --host",
+    "build": "vite build",
+    "preview": "vite preview"
   },
   "dependencies": {
-    "axios": "^1.4.0",
-    "cors": "^2.8.5",
-    "express": "^4.18.2",
-    "express-rate-limit": "^6.8.0",
-    "helmet": "^6.0.1"
+    "@capacitor-community/text-to-speech": "^6.1.0",
+    "@capacitor/android": "^7.4.3",
+    "firebase": "^12.6.0",
+    "react": "^19.2.0",
+    "react-dom": "^19.2.0",
+    "react-native-svg": "^15.15.0",
+    "react-native-tts": "^4.1.1"
   },
   "devDependencies": {
-    "nodemon": "^2.0.22"
-  },
-  "engines": {
-    "node": "18.x"
+    "@capacitor/cli": "^7.4.3",
+    "@capacitor/core": "^7.4.3",
+    "@types/node": "^22.14.0",
+    "@vitejs/plugin-react": "^5.0.0",
+    "typescript": "~5.8.2",
+    "vite": "^6.2.0"
   }
 }

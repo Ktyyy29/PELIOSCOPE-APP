@@ -1,0 +1,11 @@
+
+{
+  "short_name": "PelioScope",
+  "name": "PelioScope Emotion Companion",
+  "description": "An application designed to help individuals with Autism Spectrum Disorder (ASD) by displaying animated emojis that represent detected emotions in real-time, received from an ESP32-C3 device. It includes engaging activities, chat, and stats to provide a supportive experience.",
+  "icons": [],
+  "start_url": ".",
+  "display": "standalone",
+  "theme_color": "#6366f1",
+  "background_color": "#e0e7ff"
+}
